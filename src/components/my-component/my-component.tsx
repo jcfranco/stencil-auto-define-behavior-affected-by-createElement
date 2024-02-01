@@ -1,5 +1,4 @@
 import { Component, Prop, h } from '@stencil/core';
-import { format } from '../../utils/utils';
 
 @Component({
   tag: 'my-component',
@@ -7,26 +6,19 @@ import { format } from '../../utils/utils';
   shadow: true,
 })
 export class MyComponent {
-  /**
-   * The first name
-   */
-  @Prop() first: string;
+  @Prop() type: "one" | "two" = "one";
 
-  /**
-   * The middle name
-   */
-  @Prop() middle: string;
+  private internalElNotAutoDefined: HTMLElement;
+  private internalElAutoDefined: HTMLElement;
 
-  /**
-   * The last name
-   */
-  @Prop() last: string;
+  componentWillLoad(): void {
+    this.internalElNotAutoDefined = document.createElement(this.type === "one" ? "my-component-1" : "my-component-2");
+    this.internalElAutoDefined = this.type === "one" ? document.createElement("my-component-3") : document.createElement("my-component-4");
 
-  private getText(): string {
-    return format(this.first, this.middle, this.last);
+    console.log(this.internalElNotAutoDefined, this.internalElAutoDefined);
   }
 
   render() {
-    return <div>Hello, World! I'm {this.getText()}</div>;
+    return <div>👋</div>;
   }
 }

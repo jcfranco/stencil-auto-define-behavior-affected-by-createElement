@@ -7,12 +7,25 @@
 
 ## Properties
 
-| Property | Attribute | Description     | Type     | Default     |
-| -------- | --------- | --------------- | -------- | ----------- |
-| `first`  | `first`   | The first name  | `string` | `undefined` |
-| `last`   | `last`    | The last name   | `string` | `undefined` |
-| `middle` | `middle`  | The middle name | `string` | `undefined` |
+| Property | Attribute | Description | Type             | Default |
+| -------- | --------- | ----------- | ---------------- | ------- |
+| `type`   | `type`    |             | `"one" \| "two"` | `"one"` |
 
+
+## Dependencies
+
+### Depends on
+
+- [my-component-3](../my-component-3)
+- [my-component-4](../my-component-4)
+
+### Graph
+```mermaid
+graph TD;
+  my-component --> my-component-3
+  my-component --> my-component-4
+  style my-component fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
